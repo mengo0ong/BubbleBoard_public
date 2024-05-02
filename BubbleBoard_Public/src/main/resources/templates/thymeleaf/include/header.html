@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="/css/include.css">
+<script src="https://kit.fontawesome.com/c96408e797.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<header>
+<div class="logo">
+	<a th:href="@{/bboard/main}"><img src="/images/BubbleBoard_logo.jpg"></a>
+</div>
+<div class="info">
+	<div sec:authorize="isAnonymous()">
+		<a th:href="@{/buser/login}"><button type="button">로그인</button></a>
+	</div>
+	<div sec:authorize="isAuthenticated()">
+		<a th:href="@{/buser/mypage(unum=${#authentication.principal.user.unum})}"><i class="fa-regular fa-user" style="color: black;"></i><span th:text="${#authentication.principal.name}"></span></a>님
+		<a href="/buser/logout"><button>로그아웃</button></a>
+	</div>
+</div>
+</header>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="/css/mypage.css">
+<script type="text/javascript" src="/js/mypage.js"></script>
+</head>
+<body>
+<div th:replace="include/header.html"></div>
+<main>
+<div class="container">
+    <div>
+        <!-- 프로필 이미지 -->
+        <div class="user_img">
+	        <div><i th:if="${user.userImg ==null}" class="fa-solid fa-user fa-2xl"></i></div>
+	        <div><img th:if="${user.userImg != null}" th:src="@{/images/{userImg}(userImg=${user.userImg})}" alt="프로필 이미지" class="profile-image"></div>
+        	<div><button type="button" id="imageChangeButton" onclick="showUploadForm()">이미지 변경</button></div>
+	        <form id="imgUploadForm" style="display:none;">
+	        	<input type="hidden" name="unum" th:value="${user.unum}">
+		        <input type="file" id="profileImageInput" name="file" accept=".jpg, .png">
+		        <button type="button" onclick="uploadImage()">업로드</button>
+	        </form>
+        </div>
+        
+        <!-- 프로필 정보 -->
+        <ul>
+            <li><div class="flex"><div class="label">이메일:  </div><div th:text="${user.email}"></div></div></li>
+            <li><div class="flex">
+		            <div class="label">닉네임:</div>
+		            <div id="userNickname" th:text="${user.nickName}"></div>
+		            <div><button type="button" id="nicknameChangeBtn" onclick="showNicknameChangeForm()">닉네임 변경</button></div>
+		            <form id="nickNameForm" style="display: none;">
+		            	<input type="hidden" name="unum" th:value="${user.unum}">
+		            	<input type="text" name="nickName" th:value="${user.nickName}">
+		            	<span><button type="button" onclick="nicknameChange()">저장</button></span>
+		            </form>
+	            </div>
+
+            </li>
+            <li><div class="flex"><div class="label">소셜 로그인:  </div><div th:text="${user.provider}"></div></div></li>
+            <li><div class="flex"><div class="label">가입일자:  </div> <div th:text="${user.subDate}"></div></div></li>
+        </ul>
+        <a id="unlink" th:href="@{/buser/unlink/{provider}(provider=${user.provider})}" onclick="unlinkCheck()"><button type="button">계정탈퇴</button></a>
+    </div>
+</div>
+</main>
+<div th:replace="include/footer.html"></div>
+<script src="https://kit.fontawesome.com/c96408e797.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</body>
+</html>

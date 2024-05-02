@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Bubble Board 회원가입</title>
+<link rel="stylesheet" type="text/css" href="/css/signuppage.css">
+<script 
+	src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous">
+</script>
+<script type="text/javascript" src="/js/signuppage.js"></script>
+</head>
+<body>
+<div th:replace="include/header.html"></div>
+<main>
+<div><h3>회원가입</h3>
+<div class="form_div"><form id="signupForm" action="signup" method="post" onsubmit="return signUp();">
+	<div>
+		<div><input type="text" id="email" name="email" placeholder="이메일" oninput="notiExpEmail()"></div>
+		<div>*</div>
+		<div><button type="button" onclick="emailCheck()">중복 확인</button></div>
+	</div>
+	<div id="emailcheck"></div>
+	<div>
+		<div class="nickName_div"><input type="text" id="nickName" name="nickName" placeholder="닉네임"></div>
+	</div>
+	<div id="none"></div>
+	<div>
+		<div class="pwdDiv"><input type="password" id="userPwd" name="userPwd" placeholder="비밀번호" oninput="notiExpPwd()"></div>
+		<div>*</div>
+		<div><button type="button" onclick="pwdCheck()">비밀번호 확인</button></div>
+	</div>
+	<div id="pwdcheck"></div>
+	<div style="justify-content: center;"><div><a th:href="@{/bboard/main}"><button type="button">취소</button></a></div><div><button type="submit">저장</button></div></div>
+</form></div>
+</div>
+</main>
+<div th:replace="include/footer.html"></div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>BubbleBoard 로그인</title>
+<link rel="stylesheet" type="text/css" href="/css/loginpage.css">	
+<script type="text/javascript" src="/js/loginpage.js"></script>
+</head>
+<body>
+<div th:replace="include/header.html"></div>
+<main>
+	<div><h3>로그인</h3></div>
+	<form action="doLogin" method="post">
+		<div class="loginForm">
+			<div><input type="text" name="email" placeholder="이메일"></div>
+			<div><div><input type="password" name="userPwd" placeholder="비밀번호"></div></div>
+			<div><button type="submit">로그인</button></div>
+			<div class="signup">
+				<div><a th:href="@{/buser/signup}">회원가입</a></div>
+			</div>
+		</div>
+	</form>
+	<div>
+		<div class="separator">또는</div>
+	</div>
+	<div class="social_login">
+	<div><a href="/oauth2/authorization/google"><img src="/images/web_light_sq_SU@2x.png"></a></div>
+	<div><a href="/oauth2/authorization/naver"><img src="/images/btnG_완성형.png"></a></div>
+	<div><a href="/oauth2/authorization/kakao"><img src="/images/kakao_login_medium_narrow.png"></a></div>
+	</div>
+	
+	<div th:if="error">
+	  <p id="valid" style="color: red; font-size:12px;"><a th:text="${exception}"></a></p>
+	</div>
+</main>
+<div th:replace="include/footer.html"></div>
+</body>
+</html>

@@ -1,0 +1,100 @@
+@charset "UTF-8";
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+main {
+	min-height: 500px;
+    margin-bottom: 70px; /* footer와 겹치지 않도록 main의 하단 여백 추가 */
+    text-align: center;
+}
+
+
+/* 유저 정보 컨테이너 스타일링 */
+.container > div {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+#imageChangeButton, #imgUploadForm {
+	margin-top: 20px;
+}
+
+.user_img > div {
+    margin-right: 10px;
+}
+
+.user_img > div:last-child {
+    margin-right: 0;
+}
+
+.user_img .profile-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+ul {
+	width: 350px;
+    margin: 10px auto;
+    padding: 0;
+}
+
+ul li{
+	list-style: none;
+	margin-top: 10px;
+}
+
+.flex {
+	display: flex;
+	align-items: center;
+}
+
+.label { margin-right: 10px;}
+
+/* 닉네임 변경 버튼 스타일링 */
+#nicknameChangeBtn, #imageChangeButton, #imgUploadForm button, #nickNameForm button {
+    margin-left: 10px;
+    padding: 5px;
+    background-color: #a26ec8;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+#nickNameForm input { width: 80%; box-sizing: border-box; border: 1px solid #ccc; border-radius: 5px; padding: 5px;}
+
+/* 닉네임 변경 폼 스타일링 */
+#nickNameForm {
+    margin-top: 10px;
+	width: 80%
+}
+
+/* 탈퇴 버튼 스타일링 */
+#unlink {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+}
+
+#unlink button {
+    padding: 8px 12px;
+    background-color: #c79fe4;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+#unlink button:hover {
+    background-color: #a26ec8;
+}
+

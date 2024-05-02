@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>게시글 수정</title>
+<link rel="stylesheet" type="text/css" href="/css/editpage.css">
+<script type="text/javascript" src="/smarteditor/js/HuskyEZCreator.js" charset="UTF-8"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+       integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/js/editpage.js"></script>
+</head>
+<body>
+<div th:replace="include/header.html"></div>
+<main>
+<form id="editPost" onsubmit="return edit();">
+    <div id="form-div">
+    	<div><input type="hidden" name="bnum" th:value="${board.bnum}"></div>
+        <div class="author"><label class="up-label">작성자</label><div>[[${board.user.nickName}]]</div></div>
+        <div class="title"><label class="up-label">제목</label><input type="text" name="title" th:value="${board.title}"></div>
+        <div><div id="smarteditor"><textarea id="content" name="content" th:text="${board.content}"></textarea>
+        <script id="smartEditor" type="text/javascript"> 
+			var oEditors = [];
+			nhn.husky.EZCreator.createInIFrame({
+			    oAppRef: oEditors,
+			    elPlaceHolder: "content",  //textarea ID 입력
+			    sSkinURI: "/smarteditor/SmartEditor2Skin.html",  //smartEditor2Skin.html 경로 입력
+			    fCreator: "createSEditor2",
+			    htParams : { 
+			    	// 툴바 사용 여부 (true:사용/ false:사용하지 않음) 
+			        bUseToolbar : true, 
+				// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음) 
+				bUseVerticalResizer : false, 
+				// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음) 
+				bUseModeChanger : false 
+			    },
+			    fOnAppLoad: function() {
+		            oEditors.getById["content"].exec("PASTE_HTML", [""]);
+		        }
+			});
+		</script>
+        <div th:if="${attachs != null}">
+            <label>기존 파일:</label>
+            <ul th:each="file : ${attachs}">
+                <li th:data-fname="${file.fname}">
+                	<span th:id="${file.fname}" th:text="${file.fname}"></span>
+                    <button type="button" th:onclick="fDel([[${file.fname}]])">삭제</button>
+                </li>
+            </ul>
+        </div>
+        <div style="margin-top: 10px;"><input type="file" id="file1" name="files" multiple></div>
+    </div>
+    <div class="btn">
+	    <a th:href="@{/bboard/main}"><button type="button">취소</button></a>
+	    <button id="submitpost" type="submit">업로드</button>
+    </div>
+</form>
+</main>
+<div th:replace="include/footer.html"></div>
+</body>
+</html>

@@ -1,0 +1,91 @@
+@charset "UTF-8";
+/* main 요소 스타일링 */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 600px;
+}
+
+/* 내부 div 요소 스타일링 */
+main > div {
+    width: 100%; /* 전체 너비를 활용 */
+    max-width: 500px; /* 최대 너비 설정 */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-sizing: border-box; /* 패딩, 테두리를 포함한 전체 요소 크기 계산 */
+    margin: 0 auto; /* 가운데 정렬 */
+}
+
+/* 제목 스타일링 */
+main > div > h3 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+
+/* 입력 폼 스타일링 */
+.form_div { width: 340px; margin: 0 auto;}
+.form_div div {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+/* 입력 필드 스타일링 */
+main > div form input[type="text"],
+main > div form input[type="password"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+#email, #userPwd {
+    width: 190px;
+}
+
+.nickName_div { width: 100% }
+.nickName_div input { width: 100% }
+
+/* '*' 아이콘 스타일링 */
+main > div form > div > div {
+    margin-right: 10px;
+    color: red;
+}
+
+
+/* 중복 확인 버튼 스타일링 */
+main > div form button[type="button"],
+main > div form button[type="submit"] {
+    padding: 8px 12px;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    margin-right: 5px; /* 버튼 사이 여백 추가 */
+}
+
+
+
+/* 취소 버튼 스타일링 */
+main > div form button[type="button"] {
+    background-color: #808080;
+}
+
+/* 저장 버튼 스타일링 */
+main > div form button[type="submit"] {
+    background-color: #c79fe4;
+}
+
+#emailcheck, #pwdcheck {
+    font-size: 14px;
+    color: red;
+}
+

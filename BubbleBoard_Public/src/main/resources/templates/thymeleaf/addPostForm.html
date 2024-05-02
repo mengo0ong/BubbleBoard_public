@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>게시글 작성</title>
+<link rel="stylesheet" type="text/css" href="/css/addPostpage.css">
+<link rel="icon" href="data:;base64,="> <!-- favicon.ico 500 에러 제거를 위한 코드 -->
+<script type="text/javascript" src="/smarteditor/js/HuskyEZCreator.js" charset="UTF-8"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/js/addPostpage.js"></script>
+</head>
+<body>
+<div th:replace="include/header.html"></div>
+<main>
+	<form id="addPost" onsubmit="return add();">
+	    <div id="form-div">
+	    	<div><input type="hidden" th:if="${pbnum!=null}" id="pBoard" name="pBoard" th:value="${pbnum}"></div>
+	    	<div th:unless="${pbnum}"></div> <!-- 서버에서 답글달기가 아닌 게시글 작성 버튼으로 인해 pbnum이 안넘어올 경우 처리 -->
+	        <div class="author"><label class="up-label">작성자</label><div>[[${#authentication.principal.name}]]</div></div>
+	        <div class="title"><label class="up-label">제목</label><input type="text" name="title"></div>
+	        <div><div id="smarteditor"><textarea id="content" name="content" ></textarea>
+	        <script id="smartEditor" type="text/javascript"> 
+				var oEditors = [];
+				nhn.husky.EZCreator.createInIFrame({
+				    oAppRef: oEditors,
+				    elPlaceHolder: "content",  //textarea ID 입력
+				    sSkinURI: "/smarteditor/SmartEditor2Skin.html",  //smartEditor2Skin.html 경로 입력
+				    fCreator: "createSEditor2",
+				    htParams : { 
+				    	// 툴바 사용 여부 (true:사용/ false:사용하지 않음) 
+				        bUseToolbar : true, 
+						// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음) 
+						bUseVerticalResizer : false, 
+						// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음) 
+						bUseModeChanger : false 
+				    },
+				    fOnAppLoad: function() {
+			            oEditors.getById["content"].exec("PASTE_HTML", [""]);
+			        }
+				});
+			</script>
+			</div></div>
+	        <div><input type="file" id="file1" name="files" multiple></div>
+	    </div>
+	    <div class="btn">
+		    <a th:href="@{/bboard/main}"><button type="button">취소</button></a>
+		    <button id="submitpost" type="submit">업로드</button>
+	    </div>
+	</form>
+</main>
+<div th:replace="include/footer.html"></div>
+</body>
+</html>

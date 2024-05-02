@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title>메인 페이지</title>
+<link rel="stylesheet" type="text/css" href="/css/mainpage.css">
+<script src="https://kit.fontawesome.com/c96408e797.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body>
+<div th:replace="include/header.html"></div>
+<main>
+	<h2>게시글 목록</h2>
+	<div class="writeBtn"><a sec:authorize="isAuthenticated()" th:href="@{/bboard/add}"><button type="button">게시글 작성</button></a></div>
+	<table>
+		<tr><th>게시글번호</th><th>게시글 제목</th><th>작성자</th><th>작성일자</th></tr>
+		<tr th:each="b:${board}">
+			<td class="bnum" th:text="${b.bnum}"></td>
+			<td class="title" th:classappend="${b.pBoard != 0} ? 'reply'"><a th:href="@{/bboard/detail(bnum=${b.bnum})}">[[${b.title}]]</a></td>
+			<td th:text="${b.user.nickName}"></td>
+			<td th:text="${b.posted}"></td>
+			
+		</tr>
+		<tr th:if="${#lists.isEmpty(board)}"><td colspan="4">게시글이 없습니다.</td></tr>
+	</table>
+</main>
+<div th:replace="include/footer.html"></div>
+</body>
+</html>

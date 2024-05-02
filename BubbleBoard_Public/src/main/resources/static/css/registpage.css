@@ -1,0 +1,25 @@
+@charset "UTF-8";
+/* main 요소 스타일링 */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* 내부 div 요소 스타일링 */
+main > div {
+    text-align: center;
+}
+
+/* 이메일 텍스트 스타일링 */
+main > div > div:first-child {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* 환영 메시지 텍스트 스타일링 */
+main > div > div:last-child {
+    font-size: 18px;
+}

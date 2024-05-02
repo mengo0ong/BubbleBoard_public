@@ -1,0 +1,86 @@
+@charset "UTF-8";
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+main {
+	min-height: 700px;
+    margin-bottom: 70px; /* footer와 겹치지 않도록 main의 하단 여백 추가 */
+}
+
+/* 스마트 에디터 영역 스타일링 */
+#form-div {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.author, .title {
+    display: flex;
+}
+
+.author, .up-label,
+#smarteditor,
+#file1 {
+    margin-bottom: 20px;
+}
+
+.up-label {
+    display: inline-block;
+    width: 60px;
+    max-width: 80px;
+    padding-right: 10px;
+    border-right: 1px solid black;
+    margin-right: 10px;
+}
+
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* 버튼 스타일링 */
+.btn {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #c79fe4;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.btn button:hover {
+    background-color: #a26ec8;
+}
+
+/* 반응형 디자인 */
+@media screen and (max-width: 768px) {
+    #form-div {
+        max-width: 90%;
+    }
+
+    .up-label {
+        width: auto;
+        border: none;
+        margin-right: 0;
+        padding-right: 0;
+    }
+}

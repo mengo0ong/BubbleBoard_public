@@ -1,0 +1,98 @@
+@charset "UTF-8";
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+main {
+    min-height: 700px;
+    margin-bottom: 70px;
+    text-align: center;
+    width: 100%; /* 전체 너비 */
+    max-width: 1200px; /* 최대 너비 지정 */
+    margin: 0 auto;
+    padding: 0 20px; /* 콘텐츠와의 간격 조정 */
+    box-sizing: border-box; /* 패딩과 보더를 포함한 전체 너비 계산 */
+}
+
+h2 { color: #a26ec8 }
+
+.reply a {
+    margin-left: 20px;
+    border-left: 2px solid #ccc;
+    padding-left: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+    text-align: center;
+}
+
+.bnum {
+    width: 10%;
+}
+
+.title {
+    width: 60%;
+    text-align: left;
+}
+
+.title a {
+    display: block;
+    text-decoration: none;
+    color: #333333;
+    font-weight: bold;
+}
+
+.title a:hover {
+    color: #a26ec8;
+}
+
+.writeBtn {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.writeBtn button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #c79fe4;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.writeBtn button:hover {
+    background-color: #a26ec8;
+}
+
+@media screen and (max-width: 768px) {
+    main {
+        min-height: auto;
+    }
+
+    .title, .bnum {
+        width: auto;
+    }
+
+    .reply a {
+        margin-left: 0;
+        border-left: none;
+        padding-left: 0;
+        display: block;
+    }
+}
+
