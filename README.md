@@ -23,7 +23,7 @@
 
 ## 데이터 베이스
 <p>
-  <img src="">
+  <img src="https://github.com/mengo0ong/BubbleBoard_public/assets/153881177/82bd881c-3eb5-4343-9ddc-ed5abe9a7427">
 </p>
 
 ## 후기
